@@ -19,12 +19,17 @@ if __name__ == '__main__':
 
     #Calculate crack tip trajectory
     tip_pos=np.zeros(np.shape(crack_width[:,1]))
+    rad_tip=np.zeros(np.shape(tip_pos))
     for i in range(np.shape(crack_width)[0]-1):
         index = np.max(np.where(crack_width[i,:] > 1))
         tip_pos[i]=index
+        rad_tip[i]=np.max(np.sum(crack_width[:,index-50:index]))
+
+
 
     time = (1/fps)*np.arange(0,np.size(tip_pos))
     tip_pos = scale*tip_pos
+    rad_tip = scale * rad_tip/2
 
     np.savetxt(filename[:-4] + '_tiptraj.txt',np.c_[time,tip_pos])
 

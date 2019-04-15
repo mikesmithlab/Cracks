@@ -1,23 +1,17 @@
 import numpy as np
-import plotting
+from plotting import Plotter
 
-phi_0 = 0.68
-v = 1
-E = 1
-h=1E-5
-A = 1
-B = 1
-zeta = 1
+a=11E-9
+L = 1000 # Length of wet region
+P_cap = 2*72E-3/a
 
+x = np.linspace(0,L,100)
+print(x)
 
-x = np.linspace(0,250,0.1)
+sigma_0 = P_cap*(x/L)
 
+r_tip =
 
-P_x = -mu_over_k*((v*x*(phi - phi_0)/phi_0) - (E*x**2)/(2*h))
-
-r_p = (np.pi/8)*(K/sigma_ys)
-
-sigma_ys = (phi**2/a)*(A-B*zeta)
-
-
-plt = plotting.Plotter(x,P_x)
+plt = Plotter(subplot=(2, 1),sharey = True)
+plt.add_plot(x, sigma_0, marker='r-')
+plt.show_figure()
