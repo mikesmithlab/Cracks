@@ -2,7 +2,7 @@ import numpy as np
 import Generic.filedialogs as fd
 import matplotlib.pyplot as plt
 import Generic.plotting as p
-
+from scipy      import optimize
 
 def add_position(plot_obj, filename, crack_width, time, width, marker):
     plot_obj.add_plot([width, width], [0, 1.2 * crack_width.max()], marker=marker + '--', subplot=1)
@@ -14,7 +14,7 @@ def add_position(plot_obj, filename, crack_width, time, width, marker):
 if __name__ == '__main__':
     scale=3.215E-1 #microm/pixel
     fps=2.0
-    filename = fd.load_filename(directory='/media/ppzmis/SAMSUNG/crackbranching/CrackHoppingVids',file_filter='*.txt')
+    filename = fd.load_filename(directory='/media/ppzmis/data/Cracks/2020_02_14',file_filter='*.txt')
     crack_width = np.loadtxt(filename)
 
     #Calculate crack tip trajectory
