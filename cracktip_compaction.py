@@ -275,9 +275,9 @@ def processframe(frame, angle):
 
 if __name__ == '__main__':
 
-    filename = '/media/ppzmis/data/Cracks/2020_02_14/2020_02_14Newno_salt_20uL_A_5fps_2020-02-14-115652-0000.avi'
+    filename = '/media/ppzmis/data/Cracks/2020_03_17/25mMnacl5fps_2020-03-17-110622-0000.avi'
     vidObj = ReadVideo(filename=filename)
-    angle = -5 + 0.1503646
+    angle = 175
     crack_threshval = 110
     frame_index=110
     scale = 300/1803.91 # scale in um/pixel taken from
@@ -294,7 +294,7 @@ if __name__ == '__main__':
 
     show_frame(resize_frame(rot_frame))
     output = [[0, pos*scale, cracktip_x*scale]]
-    for index in range(700):
+    for index in range(vidObj.num_frames-1):
         frame = vidObj.read_next_frame()
         crack_frame, rot_frame, gray_frame = processframe(frame, angle)
         cracktip_x, cracktip_y, rot_frame = find_cracktip(crack_frame,
